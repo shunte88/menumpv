@@ -4,6 +4,14 @@ set -e
 cd "$(dirname "$0")"
 install -Dm755 mpv-play-folder.py ~/.local/bin/mpv-play-folder
 
+# mpv profiles: own file, pulled in by one include line at the TOP of mpv.conf
+# (anything after a [profile] header would land inside that profile).
+conf=~/.config/mpv/mpv.conf
+install -Dm644 mpv-play-folder.conf ~/.config/mpv/mpv-play-folder.conf
+touch "$conf"
+grep -q 'mpv-play-folder.conf' "$conf" || sed -i '1i include="~~/mpv-play-folder.conf"' "$conf"
+[ -s "$conf" ] || echo 'include="~~/mpv-play-folder.conf"' > "$conf"
+
 if command -v nautilus >/dev/null; then
     dpkg -s python3-nautilus >/dev/null 2>&1 || sudo apt install -y python3-nautilus
     install -Dm644 mpv-play-folder.py ~/.local/share/nautilus-python/extensions/mpv-play-folder.py

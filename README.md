@@ -37,19 +37,21 @@ Done. Seriously.
 
 ## The Two Moods (a.k.a. Profiles)
 
-The settings live at the bottom of `~/.config/mpv/mpv.conf`.
+The settings live in their own little file, `~/.config/mpv/mpv-play-folder.conf`. The installer adds one line to the top of your `mpv.conf` so mpv finds it. Your other mpv settings are left alone.
 
 | Mood | What it does |
 |------|--------------|
 | **music** | Shows the album art, plays tracks back to back with no gaps, and leaves your audio untouched. Quit halfway through an album? It picks up right where you left off. Hit the last track? It loops back to the top. |
 | **videos** | Goes full screen, uses your graphics card, and remembers where you stopped. |
 
-Want to tweak? Open that file and fiddle with the `[music]` or `[videos]` section. Some fan favorites:
+Want to tweak? Open `mpv-play-folder.conf` and fiddle with the `[music]` or `[videos]` section. Some fan favorites:
 
 - Like shuffle? Add `shuffle=yes` under `[music]`.
 - Hate full screen? Change `fullscreen=yes` to `fullscreen=no` under `[videos]`.
 - Want albums to stop at the end? Change `loop-playlist=yes` to `loop-playlist=no` under `[music]`.
 - Prefer a fresh start every time? Change `save-position-on-quit=yes` to `save-position-on-quit=no` under `[music]`.
+
+Heads up: running `./install.sh` again copies a fresh `mpv-play-folder.conf` over your tweaks. Make your edits in this folder's copy and reinstall, and they'll stick.
 
 ## Uh Oh, Something's Off
 
@@ -72,6 +74,8 @@ rm ~/.local/bin/mpv-play-folder
 rm ~/.local/share/nautilus-python/extensions/mpv-play-folder.py
 rm ~/.local/share/nemo/actions/mpv-play-folder.nemo_action
 rm ~/.local/share/kio/servicemenus/mpv-play-folder.desktop
+rm ~/.config/mpv/mpv-play-folder.conf
+sed -i '/mpv-play-folder.conf/d' ~/.config/mpv/mpv.conf
 ```
 
-Your mpv settings stay put, and a backup of the original is saved as `~/.config/mpv/mpv.conf.bak-2026-11-12`.
+That last line just removes the one line the installer added. Everything else in your mpv settings stays put.
