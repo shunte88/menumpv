@@ -2,6 +2,7 @@
 # Installs whatever applies: Nautilus extension, Nemo action, Dolphin service menu.
 set -e
 cd "$(dirname "$0")"
+command -v mpv >/dev/null || sudo apt install -y mpv
 install -Dm755 mpv-play-folder.py ~/.local/bin/mpv-play-folder
 
 # mpv profiles: own file, pulled in by one include line at the TOP of mpv.conf

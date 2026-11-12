@@ -7,7 +7,7 @@ Got a folder full of FLACs? Right-click, pick **Play Music**, and your album sta
 ## What You Need
 
 - Ubuntu (this was built on 26.04)
-- **mpv**, the media player. Don't have it? Run `sudo apt install mpv`
+- **mpv**, the media player. No mpv yet? The installer grabs it for you.
 - One of these file managers:
   - **Files** (the Ubuntu default, also called Nautilus)
   - **Nemo**
