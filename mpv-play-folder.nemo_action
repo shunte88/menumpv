@@ -1,0 +1,7 @@
+[Nemo Action]
+Name=Play folder in mpv
+Comment=Play this folder with mpv (music or videos profile)
+Exec=mpv-play-folder %F
+Icon-Name=mpv
+Selection=notnone
+Extensions=dir;

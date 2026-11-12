@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Service
+MimeType=inode/directory;
+Actions=play
+
+[Desktop Action play]
+Name=Play folder in mpv
+Icon=mpv
+Exec=mpv-play-folder %F
